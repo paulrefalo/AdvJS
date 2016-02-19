@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <title> Move the Bee.  Be the Bee! </title>
+  <meta charset="utf-8">
+  <style>
+    html, body {       
+        margin: 0px;
+        padding: 0px;
+    }
+    body {
+        background-image: url("Sunny_Days.jpg");
+        background-color: #cccccc;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center; 
+    }
+    div#container {
+        position: relative;
+    }
+    div.bee {
+        position: absolute;
+        width: 100px;
+        height: 76px;
+        -webkit-transition: -webkit-transform 2s;
+        -moz-transition: -moz-transform 2s;
+        -o-transition: -o-transform 2s;
+        transition: transform 2s;
+    }
+    .up {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    .down {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+    .right {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+    .left {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+  </style>
+  <script>
+
+    // your code here
+    function Bee(id) {
+
+        var el = null;					// declare el 
+        
+        this.moveBee = function(k) {
+            if( k == 104 ){				// h key - left
+              el.setAttribute("class", "bee left");	// set CSS classes
+              move(-5, 0);				// call move with change in X position and change in Y position
+            }
+            else if ( k == 106 ){			// j key - down
+              el.setAttribute("class", "bee down");	// set CSS classes
+              move(0, 5);				// call move with change in X position and change in Y position
+            }   
+            else if ( k == 107 ){			// k key - up
+              el.setAttribute("class", "bee up");	// set CSS classes
+              move(0, -5);				// call move with change in X position and change in Y position
+            }  
+            else if ( k == 108 ){			// l key - right
+              el.setAttribute("class", "bee right");	// set CSS classes
+              move(5, 0);				// call move with change in X position and change in Y position
+            }                    
+        };
+        
+        display();					// call display
+
+	function move( dX, dY ) {
+	    var curleft = el.offsetLeft;		// get current left position
+	    var curtop = el.offsetTop;			// get current top position
+	    el.style.left = curleft + dX + 'px';	// change left by dX
+	    el.style.top = curtop + dY + 'px';		// change top by dY
+	}
+        
+        function display() {
+            el = document.createElement("div");		// access document
+            el.setAttribute("class","bee");		// assign CSS class
+            el.style.backgroundImage = "url('bee.png')";	// define backgroundImage
+            el.style.top = 300 + "px";			// starting top position
+            el.style.left = 800 + "px";			// starting left position
+            container.appendChild(el);			// append obj to the container ID
+        }
+    }
+    
+    window.onload = function() {
+        var bee = new Bee("container");
+
+        // j = 106 (down), k = 107 (up), h = 104 (left) , l = 108 (right)
+        document.onkeypress = function(e) {
+            bee.moveBee((typeof e.which == "number") ? e.which : e.keyCode);
+        }
+    };
+
+  </script>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+</html>  

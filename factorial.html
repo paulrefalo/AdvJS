@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <title> factorial </title>
+  <meta charset="utf-8">
+  <script>
+
+    function factorial(n) {
+        // your code here
+        if ( n > 1 ) {
+          console.log("The factorial of " + n + " is " + n + " * the factorial of " + (n-1) + ".");
+        } else if ( n == 1 ) {
+          console.log("The factorial of 1 is 1.");
+	  return n;         
+        } else if ( n < 1 ) {
+          return "That value does not have a real factorial";
+        }
+        
+        return (n * factorial(n-1));
+  
+    }
+
+    console.log("Factorial result: " + factorial(5));
+
+  </script>
+</head>
+<body>
+</body>
+</html> 

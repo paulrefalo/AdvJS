@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title> Advanced JavaScript Project: Constructing Array Objects </title>
+  <meta charset="utf-8">
+  <script>
+    // your code here
+    myArray = ['Adv', 'JS', 'with', 'John'];	// define array
+    console.log('Print the array: ', myArray);	// console output of array
+    myArray.name = "JS is fun";			// define .name property as a string
+    
+    myArray.list = function() {			// define .list as a function that outputs the array contents
+    	for(var i = 0; i < this.length; i++) {	// this function does not display the properties when called
+    	  console.log(this[i]);			// it only gives the defined values
+    	} 
+    }
+    console.log('Print out array with a call to .list function');
+    console.log(myArray.list());		// a call to .list() with myArray
+    
+    function displayArray(myArray) {		// function that does the same thing with for in loop
+    	for(key in myArray){			// this func DOES print both values and properties
+    		console.log(myArray[key]);	// similar to hash in Perl or dict in Python
+    	}
+    }
+    console.log('Print out array with call to displayArray with for/in loop');
+    displayArray(myArray);
+
+  </script>
+</head>
+<body>
+</body>
+</html>   

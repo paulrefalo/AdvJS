@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title> Advanced JavaScript Project: extend() </title>
+  <meta charset="utf-8">
+  <script>
+    function extend(thing1, thing2) {			// add properties of thing2 to thing1
+      for (var property in thing2) {			// loop through properties of thing2
+        if ( typeof thing1[property] == "undefined") {	// if the property already exists, do nothing
+          thing1[property] = thing2[property];		// if not, define the property with that of thing2
+          }  
+        }   
+        return thing1;					// return that object
+    }
+   
+
+    var bird1 = {
+        name: "robin",
+        songbird: true
+    };
+
+    var bird2 = {
+        name: "ostrich",
+        songbird: false,
+        flies: false
+    };
+
+    var bird = {
+        phylum: "chordata",
+        class: "aves",
+        feathered: true,
+        flies: true
+    };
+
+    console.log("------ Extend with birds ------ ");
+    extend(bird1, bird);
+    console.log(bird1);
+
+    extend(bird2, bird);
+    console.log(bird2);
+  </script>
+</head>
+<body>
+</body>
+</html> 

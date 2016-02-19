@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title> Advanced JavaScript Project: trim() </title>
+  <meta charset="utf-8">
+  <script>
+    // set up some examples
+    var examples = [null, 3, [1,2], "Dangerfield is funny", 42, "    Dangerfield is funny", "Dangerfield is funny    ", 
+                    "    Dangerfield is funny    "];
+                    
+    function trim(s) {
+      if( s == "" || typeof s != 'string' ) {  // input needs to be a populated string
+         b = ""
+         return b
+      }
+      // some function vars
+      var start = 0, end = 0, a = '', z = '', go = 0, stop = 0, result = ''; len = s.length;
+    
+      for(i = 0; i < len; i++) {		// loop through letters
+        a = s.substring(i, i+1);		// use a as starting letter to examine
+        z = s.substring(len-i-1, len-i);	// use z as ending letter to examine
+      
+        if (a == ' ' && start == 0) {		// find non-space and set equal to a
+          go = i+1;
+        } else if (start == 0) {
+          go = i;
+          start = 1;
+        } 
+        
+        if (z != ' ' && end == 0) {		// find non-space and set equal to z
+          stop = len - i;
+          end = 1;
+        } else if ( z == ' ' && end == 0) {
+          stop = len - i;
+        }       
+        
+      }
+      result = s.substring(go, stop);		// use go and stop with .substring to define result
+      return result;
+    }
+    
+    for(var i in examples) {			// loop over examples and write result to console log
+      console.log("[" + trim(examples[i]) + "]"); 
+    }
+      
+  </script>
+</head>
+<body>
+</body>
+</html> 
+   

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <title> Scope </title>
+  <meta charset="utf-8">
+  <style>
+    html {
+        height: 100%;
+    }
+    body {
+        height: 100%;
+        margin: 0px;
+        font-family: Helvetica, sans-serif;
+    }
+    div#container {
+        margin: auto;
+        width: 300px;
+    }
+    form {
+        margin-top: 20%;
+    }
+    form input[type="text"] {
+        font-size: 120%;
+        text-align: center;
+    }
+    form input[type="button"] {
+        background-color: lightblue;
+        font-size: 110%;
+    }
+  </style>
+  <script>
+function addNote(event) {
+
+    var validChords = {
+        C: "CEG",
+        F: "FAC",
+        G: "GBD"
+    };
+
+    var note = event.target.value;
+    // your code here
+    var notesPlayed = document.getElementById("notesDisplay");	// access document by Id for notesPlayed and msg
+    var msg = document.getElementById("message");
+    var chord = notesPlayed.value;				// grab user input from button
+    chord += note;						// construct chord string until length == 3
+    notesPlayed.value = chord;					// update .value for next time around
+    console.log("Chord is: " + chord + " and notesPlayed is: " + notesPlayed.value);
+    
+    if (chord.length == 3) {					// when length is 3 check if isChord with function
+        var isChord = isChord(chord);				// call isChord
+        var result = ''						// construct boolean response to isChord
+        if (isChord) {
+          result = chord + " is a valid chord.";
+        } else {
+          result = chord + " is NOT a valid chord.";
+        }
+        msg.innerHTML = result;					// write the result to innerHTML
+ 
+        clearForm();      					// clear the form
+    }
+    
+    function isChord(chord) {
+        for (c in validChords){					// check if c is in associative arr validChords
+            if (validChords[c] == chord) {
+                return chord;					// if yes then return that chord
+            }
+        }
+        return false;						// if not then return false
+    } 
+    
+    function clearForm() {					// clear form by id
+      document.getElementById("guitar").reset();
+    }
+}              
+             
+window.onload = function() {
+    var notes = ["C", "D", "E", "F", "G", "A", "B"];
+    
+    var cButton = document.getElementById("c");
+    cButton.onclick = addNote;
+    var dButton = document.getElementById("d");
+    dButton.onclick = addNote;
+    var eButton = document.getElementById("e");
+    eButton.onclick = addNote;
+    var fButton = document.getElementById("f");
+    fButton.onclick = addNote;
+    var gButton = document.getElementById("g");
+    gButton.onclick = addNote;
+    var aButton = document.getElementById("a");
+    aButton.onclick = addNote;
+    var bButton = document.getElementById("b");
+    bButton.onclick = addNote;
+    
+    // your code here
+}  
+  </script>
+</head>
+<body>
+<div id="container">
+<form id="guitar">
+<p id="message">Enter a major triad chord:</p>
+<p>
+    <input id="notesDisplay" type="text" size="21">
+</p>
+<p>
+    <input id="c" type="button" value="C">
+    <input id="d" type="button" value="D">
+    <input id="e" type="button" value="E">
+    <input id="f" type="button" value="F">
+    <input id="g" type="button" value="G">
+    <input id="a" type="button" value="A">
+    <input id="b" type="button" value="B">
+</p>
+</form>
+</div>
+</body>
+</html> 

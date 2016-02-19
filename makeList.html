@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <title> Make an HTML list </title>
+  <meta charset="utf-8">
+  <script>
+
+    // your code here
+    function makeList() {   
+        var aList;						// declare aList
+        console.log(arguments);
+        if (arguments[0] == 'ul') {				// get proper list type from arguments array
+          aList = document.createElement('ul');
+        } else if (arguments[0] == 'ol') {
+          aList = document.createElement('ol');
+        } 
+                       
+        for(var i = 1; i < arguments.length; i++) {		// loop over arguments array but skip arg[0]
+            var li = document.createElement("li");		// create 'li' elements for the rest
+            li.innerHTML = arguments[i];			// write to innerHTML
+            aList.appendChild(li);				// appendChild to aList
+        }
+        return aList.outerHTML;					// return outerHTML
+        
+    }
+
+    window.onload = function() {
+      var list = makeList("ul", "apples", "oranges", "pears", "pomegranates");     
+      var theListDiv = document.getElementById("theList");
+      theListDiv.innerHTML = list;
+      
+      var veggies = makeList("ol", "fennel", "onions", "leeks");
+      var theVeggies = document.getElementById("theVeggieList");
+      theVeggies.innerHTML = veggies;
+    }
+  </script>
+</head>
+<body>
+  <h3>The Fruits</h3>
+  <div id="theList"></div>
+  <h3>The Veggies</h3>
+  <div id="theVeggieList"></div>
+</body>
+</html> 

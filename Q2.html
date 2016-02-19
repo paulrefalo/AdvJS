@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title> Advanced JavaScript Project: objectContainsOnlyStrings() </title>
+  <meta charset="utf-8">
+  <script>
+
+function safeDivide(dividend, divisor) {
+    var okay = true;
+    if (typeof dividend == "string") {
+        dividend = parseInt(dividend);
+        if (isNaN(dividend)) {
+            console.log("Dividend is not a number");
+            return NaN;
+        }
+    }
+    if (typeof divisor == "string") {
+        divisor = parseInt(divisor);
+        if (isNaN(divisor)) {
+            console.log("Divisor is not a number");
+            return NaN;
+        }
+    }
+    if (typeof dividend == "number" && typeof divisor == "number") {
+        return dividend / divisor;
+    }
+}
+console.log("----- Safe Divide -----");
+var result = safeDivide(3, "one");
+console.log(result); 
+var result = safeDivide(3, "1");
+console.log(result); 
+
+</script>
+  
+  </head>
+<body>
+</body>
+</html>  

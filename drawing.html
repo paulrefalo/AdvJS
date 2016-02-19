@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <title> JavaScript Environment: Project </title>
+  <meta charset="utf-8">
+  <style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    #canvas {
+        background-color: yellow;
+        width: 100%;
+        height: 100%;
+    }
+    .pen {
+        position: absolute;
+        background-color: lightblue;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+    }
+  </style>
+  <script>       
+    window.onload = function() {
+        // your code here
+        trace.init();
+    };
+    
+    var trace =   (function() {				// use Modern Pattern to define trace
+       var draw = {};					// set up globals
+       var blue = 0; 
+       var posX, posY;
+       
+       draw.init = function() {
+           div = document.getElementById("canvas");	// access the document for the canvas div
+                                
+           div.onmousemove = function(e) {		// event handler for onmousemove
+               if (blue) {				// if blue then get x and y then add color
+                   posX = e.clientX;			// get x
+                   posY = e.clientY;			// get y
+                   addBlue(posX, posY);			// add color to document
+               }
+           }
+           
+           div.onmousedown = function() {              	// event handler for onmousedown (add blue)
+               blue = 1;
+           }
+           
+           div.onmouseup = function() { 		// event handler for onmouseup (no blue)
+               blue = 0;
+           }  
+       }
+       
+       function addBlue (x, y){
+           var blu = document.createElement("div");	// access document
+           blu.setAttribute("class", "pen");		// add CSS class pen
+           blu.style.left = x + "px";			// adjust x position
+           blu.style.top = y + "px";			// adjust y position
+           div.appendChild(blu);			// append to the document
+       }
+       
+       return draw;
+       
+    
+        
+    })();
+    
+    
+  </script>
+</head>
+<body>
+  <div id="canvas">
+  
+  </div>
+</body>
+</html>   

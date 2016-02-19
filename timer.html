@@ -1,0 +1,26 @@
+<head>
+  <title> setTimeout </title>
+  <meta charset="utf-8">
+  <script>
+
+    var count = 0;
+    
+    // rewrite the code above here so that it displays a counter once every
+    // 10 seconds. The console should show the numbers 1 - 10.
+    
+
+    var timer = setTimeout(function interval() {  
+        count++;
+        console.log(count);			// display the count or cycle number
+        if ( count < 10 ) {                  	// if count < 10 then recursively call this function again
+          setTimeout(interval, 10000);		// call this function with 10000 so the time between is 10 sec
+        }
+    }, 100);  					// first iteration of the function expression setTimeout
+    
+
+
+  </script>
+</head>
+<body>
+</body>
+</html> 

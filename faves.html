@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+  <title> Advanced JavaScript Project: Favorites and Tags  </title>
+  <meta charset="utf-8">
+  <style>
+    body {
+        font-family: Helvetica, Ariel, sans-serif;
+    }
+    form {
+        display: table;
+        border-spacing: 5px;
+    }
+    form p {
+        display: table-row;
+    }
+    form label {
+        display: table-cell;
+        text-align: right;
+    }
+    form input {
+        display: table-cell;
+    }
+    span.comment {
+        font-size: 80%;
+        color: #777777;
+    }
+    span.tags {
+        font-size: 80%;
+        color: rgb(48, 99, 170);
+    }
+  </style>
+  <script>
+    // your code here
+    function Favorites(url, title, comment, tags) {	// define obj properties
+	this.url = url;
+	this.title = title;
+	this.comment = comment;
+	this.tags = tags;			
+    }
+            
+     // Display favorites
+     function addFaves() {
+			
+	var newFav = new Favorites(				// construct new obj from form values
+	  faves.elements["url"].value,
+	  faves.elements["title"].value,
+	  faves.elements["comment"].value,
+	  faves.elements["tags"].value
+	);
+			
+	var list = document.getElementById("favList");		// create element and appendChild
+	var listItem = document.createElement("li");
+	var title = '<a href="' + newFav.url + '">' + newFav.title + '</a><br>';
+	var comments = '<span>' + newFav.comment + '</span><br>';
+	var tags = 'Tags: ' + newFav.tags;
+	listItem.innerHTML = title + comments + tags;
+	
+	list.appendChild(listItem);			
+	clearForm();						// clear the form
+      }    
+      
+      function clearForm() {
+        document.getElementById("myForm").reset();
+      }
+  </script>
+  </head>
+  <body>
+    <div>
+      <h1>Tag and save your favorites</h1>
+		
+	<div>
+	  <fieldset>
+	    <legend>Add a new favorite</legend>
+	      <form name="faves" action="" method="get" id="myForm">
+	        <div><input type="text" name="url" placeholder="URL" /></div>
+		<div><input type="text" name="title" placeholder="Title" /></div>
+		<div><input type="text" name="comment" placeholder="Comment" /></div>
+		<div><input type="text" name="tags" placeholder="Tags" /></div>
+		<div><input type="button" value="Add link" onclick="addFaves()" class="button" /></div>		
+	      </form>
+	   </fieldset>
+		
+	</div>
+	  <h1>List of favorites</h1>
+	    <ul id="favList">	
+	    </ul>	
+     </div>
+  </body>
+</html>

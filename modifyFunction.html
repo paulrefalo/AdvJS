@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <title> Modifying functions </title>
+  <meta charset="utf-8">
+  <script>
+
+function modifyFunction(f) {
+    console.log("What is in the function: ");		// see what is in f
+    console.log(f);
+    return function() {
+        
+        // your code here
+        var hasReturn = f.apply(this, arguments);	// define hasReturn with f with this and arguments
+        console.log("hasReturn is: " + hasReturn);	// check hasReturn
+        console.log("this is: " + this);		// check this, yo!
+
+        if (hasReturn) { 				// if there is a return on the function passed
+	  return hasReturn;				// then return that value
+	} else {
+	  return this;					// else return the this, which should be the function object
+	}
+        
+    };
+
+}
+
+function add1(num1, num2) {
+    return num1 + num2;
+}
+
+function add2(num1, num2, num3) {
+    var num4 = num1 + num2 + num3;
+    // dont return anything
+}
+
+var add1New = modifyFunction(add1);
+console.log(add1New(1, 2)); // should display 3
+
+var add2New = modifyFunction(add2);
+console.log(add2New(3, 4, 5)); // should display this (the window object)
+
+  </script>
+</head>
+<body>
+</body>
+</html>  

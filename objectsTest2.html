@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title> Comparing objects, take two </title>
+  <meta charset="utf-8">
+  <script>
+    function Book(title, author, published, hasMovie) {
+        this.title = title;
+        this.author = author;
+        this.published = published;
+        this.hasMovie = hasMovie;
+    }
+    var book1 = new Book("Harry Potter", "JK Rowling", 1999, true);
+    // var book2 = new Book("Harry Potter", "JK Rowling", 1999, true);
+    var book2 = book1;
+    if (book1 == book2) {
+        console.log("book1 is equal to book2");
+    } else {
+        console.log("book1 is NOT equal to book2"); 
+    }
+    book1.star = "Harry";
+    console.log(book1);
+    console.log(book2);
+  </script>
+</head>
+<body>
+</body>
+</html>         

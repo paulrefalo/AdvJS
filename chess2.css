@@ -1,0 +1,113 @@
+  html, body {       
+        margin: 0px;
+        padding: 0px;
+    }
+    .wrapper1 {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('bg.jpg');
+
+      background-size: cover;
+      background-position: center;   
+    }
+    #board1 {
+        position: relative;
+        top: 800px;
+        left: 800px;      
+    }
+    
+    #board2 {
+        position: relative;
+        top: 100px;
+        left: 500px;      
+    }
+    
+    #board3 {
+        position: relative;
+        top: 100px;
+        left: 900px;      
+    }
+    
+    #board4 {
+        position: fixed;
+        top: 200px;
+        left: 100px;      
+    }
+    
+    #board5 {
+        position: fixed;
+        top: 200px;
+        left: 200px;      
+    }
+    
+    #board6 {
+        position: fixed;
+        top: 200px;
+        left: 300px;      
+    }
+    
+    div.board {
+        position: absolute;
+        width: 215px;
+        height: 170px;
+    }
+
+    div.bee {
+        position: absolute;
+        width: 30px;
+        height: 38px;       
+        -webkit-transition: -webkit-transform 2s;
+        -moz-transition: -moz-transform 2s;
+        -o-transition: -o-transform 2s;
+        transition: transform 2s;
+    }
+    
+    .previewOverlay {
+    position: absolute;
+    display: none;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+}
+.previewOverlay img {
+    position: relative;
+    border: 20px solid white;
+    border-radius: 10px;
+    top: 50px;
+    left: 50px;
+}
+.close {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #fdfdfd;
+    font-size: 50px;
+    text-shadow: 0px 0px 5px black;
+}
+.close:after {
+    content: "\2717";
+}
+.close:hover {
+    color: orange;
+}    
+
+.box{
+    display: none;
+    width: 100%;
+}
+
+iframe:hover {
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+

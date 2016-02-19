@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title> Functions: forEach </title>
+  <meta charset="utf-8">
+  <script>
+
+    // the zeros array
+    var zeros = [0, 0, 0, 0];
+
+    console.log('Foreach');
+    console.log('Display the array');
+    forEach(zeros, showArray);					// print initial array
+    console.log('Random array');				// change values to random int 1 - 100 and print
+    forEach(zeros, makeArrayRandom);
+    forEach(zeros, showArray);
+    var copyOfZeros = zeros.map(function(x) { return x; });	// anonymous function to copy zeros array by direct mapping
+    console.log('copyOfZeros array: ');
+    forEach(copyOfZeros, showArray);				// show copy is the same
+    console.log('Is next greater: ');
+    console.log('Zeros array: ');
+    forEach(copyOfZeros, isNextGreater);			// modify for values < that of next cell and print
+    forEach(copyOfZeros, showArray);
+  
+    // your code here    
+    function forEach(array, f){
+    	for (var i = 0; i < array.length; i++) {		// call the given function on the array
+    		f(i, array);
+    	}
+    }
+
+    function showArray(i, array){				// create an output string
+	console.log('array[' + i + '] = ' + array[i]);
+    }
+	
+    function makeArrayRandom(i, array){				// assign random int 1 - 100 for each array value
+	array[i] = Math.floor(Math.random() * 100) + 1  
+    }
+	
+    function isNextGreater(i, array){				// compare on cell to the next
+	if( i < array.length - 1){				// if the cell value is greater
+	  if( array[i] < array[i+1] ) {				// make this cell == -1
+	    array[i] = -1;
+	  }
+	}
+    }
+	
+		
+  </script>
+</head>
+<body>
+</body>
+</html>  

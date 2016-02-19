@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title> Local Scope </title>
+  <meta charset="utf-8">
+  <script>
+    var message = "Loading...";
+
+    window.onload = function() {
+        var message = "Done loading";
+        updateMessage(message);
+    }
+    function updateMessage(msg) {
+      console.log(message);
+      console.log(msg);
+      var div = document.getElementById("container");
+      div.innerHTML = msg;
+    }
+  </script>
+</head>
+<body>
+  <div id="container"></div>
+</body>
+</html>  

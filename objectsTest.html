@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title> Comparing objects </title>
+  <meta charset="utf-8">
+  <script>
+      var book1 = {
+          title: "Harry Potter",
+          author: "JK Rowling",
+          published: 1999,
+          hasMovie: true
+      };
+      var book2 = {
+          title: "Harry Potter",
+          author: "JK Rowling",
+          published: 1999,
+          hasMovie: true
+      };
+      
+      if (book1 == book2) {
+        console.log("The two books are the same");
+      } else {
+        console.log("The two books are different");
+      }
+      
+      var product = "Cheese crackers";
+var onSale = true;
+var price = "3.20";           
+if (product === "Cheese crackers" && onSale && (price < 4)) { 
+    console.log("Buy the crackers"); 
+} else { 
+    console.log("Skip the crackers"); 
+}  
+  </script>
+</head>
+<body>
+</body>
+</html>        

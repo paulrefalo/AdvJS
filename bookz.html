@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <title> Object Prototypes Project : Books, 1 </title>
+  <meta charset="utf-8">
+  <style>
+    .mystery {
+      background-color: rosybrown;
+    }
+    .biography {
+      background-color: mistyrose;
+    }
+  </style>
+  <script>
+  
+    // your code here for the Book() constructor
+    function Book(genre, title, author, published, hasMovie) {
+        this.genre = genre;
+        this.title = title;
+        this.author = author;
+        this.published = published;
+        this.hasMovie = hasMovie;
+        this.prototype.toString = function() {
+            var sent = this.title + ' is a ' + this.genre + ' by ' + this.author + 
+    		         ' that was published in ' + this.published + '.';
+    		if ( this.hasMovie ) {
+    		    sent += "<br>This book" + ' has been made into a movie or TV show.';
+    		} else {
+    		    sent += "<br>This book" + ' has not yet been made into a movie or TV show.';
+    		}
+    		return sent;
+            }
+        this.prototype.display = function() {
+            console.log(this);
+        }
+    };
+
+    window.onload = function() {
+        var books = [ ];
+        // your code here to create the books and call addToPage()
+        books[0] = new Book('Mystery', 'The Maltese Falcon', 'Dashiell Hammett', 1930, true);
+        books[1] = new Book('Mystery', 'The Girl with the Dragon Tattoo', 'Stieg Larsson', 2005, true);
+        books[2] = new Book('Biography', 'You are Never Weird on the Internet', 'Felicia day', 2015, false);
+        books[3] = new Book('Biography', 'Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future', 'Ashlee Vance', 2015, false);
+        
+        for (i = 0; i < books.length; i ++) {
+            addToPage(books[i]);
+        }
+    };
+
+    function addToPage(book) {
+        var booksList = document.getElementById("books");
+        var bookItem = document.createElement("li");
+
+        // your code here to figure out how which class to add to the book
+        // you can use: bookItem.setAttribute("class", "mystery") to add the mystery class
+        // and: bookItem.setAttribute("class", "biography") to add the biography class
+        
+        if (book.genre == 'Mystery') {
+            bookItem.setAttribute('class', 'mystery');
+        } else if (book.genre == 'Biography') {
+            bookItem.setAttribute('class', 'biography');
+        }
+        book.display();					// write the info to the console
+        bookItem.innerHTML = book.toString();
+        booksList.appendChild(bookItem);
+    }
+  </script>
+</head>
+<body>
+<ul id="books">
+</ul>
+</body>
+</html> 

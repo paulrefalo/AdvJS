@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title> Counter  </title>
+  <meta charset="utf-8">
+  <script>
+    "use strict";
+    var counterModule = (function(initialValue) {
+        var counter = initialValue;
+
+        return {
+            increment: function() {
+                counter++;
+            },
+            decrement: function() {
+                counter--;
+            },
+            reset: function() {
+                counter = 0;
+            },
+            getValue: function() {
+                return counter;
+            }
+        };
+    })(0);
+
+    window.onload = function() {
+        Object.freeze(counterModule);		// freeze the obj so the property values are overwritten
+        counterModule.increment();
+        
+        try {
+            counterModule.increment = 7;		// try to change .increment
+	}
+        catch(err) {
+            console.log("TypeError because that object is frozen"); 
+	}
+        counterModule.increment();
+        
+        try {
+            counterModule.decrement = 42;		// try to change .decrement
+	}
+        catch(err) {
+            console.log("TypeError because that object is frozen"); 
+	}
+	
+        counterModule.decrement();
+        counterModule.increment();
+        console.log(counterModule.getValue());
+        counterModule.reset();
+
+    }; 
+  </script>
+</head>
+<body>
+</body>
+</html>  
